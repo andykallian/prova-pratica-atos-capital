@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Dados</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <header>
+        <h1>Lista de Dados</h1>
+    </header>
+
+    <main>
+      <div class="content">
+
+        <button class="adicionar">Novo Registro</button>
+        
+          <table border="1">
+            <thead>
+              <th class="th-id">ID</th>
+              <th class="th-name">Nome</th>
+              <th class="th-email">Email</th>
+              <th class="center fit">Ações</th>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+          </table>
+
+          <section class="edit">
+            <form class="form">
+              <label>
+                ID do usuário:
+                <input class="idInput" type="number" placeholder="ex: 1234" required>
+              </label>
+              <label for="">
+                Nome do usuário
+                <input class="nameInput" type="text" placeholder="Nome completo" required>
+              </label>
+              <label for="">
+                Email do usuário
+                <input class="emailInput" type="email" placeholder="ex: email@contato.com" required>
+              </label>
+              <button id="apply" type="button">Apply</button>
+            </form>
+          </section>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </div>
+  
+</body>
+</html>
