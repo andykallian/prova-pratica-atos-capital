@@ -113,9 +113,15 @@ function edit(e){
     button.addEventListener('click', ()=>{
 
       if((id == data.id) === true){
-        idCell.innerText = idInput.value
-        nameCell.innerText = nameInput.value
-        emailCell.innerText = emailInput.value
+        if(idInput.value !== ''){
+          idCell.innerText = idInput.value
+        }
+        if(nameInput.value !== ''){
+          nameCell.innerText = nameInput.value
+        }
+        if(emailInput.value !== ''){
+          emailCell.innerText = emailInput.value
+        }
       }
       
       hidden.classList.remove('show')
