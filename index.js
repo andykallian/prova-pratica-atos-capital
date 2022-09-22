@@ -11,7 +11,7 @@ const url = 'https://gorest.co.in/public/v2/users'
 fetch(url)
   .then(res => res.json())
    .then(data => {
-  data.forEach(element =>{
+    data.forEach(element =>{
     let tabela = tbody
     let linha = crialinha(element);
     tabela.appendChild(linha)
@@ -59,9 +59,6 @@ function crialinha(usuario){
   return linha
 }
 
-
-
-
 adicionar.addEventListener('click', (e) =>{
   e.preventDefault()
   fetch(url)
@@ -95,34 +92,33 @@ function editar(e){
   .then(res => res.json())
   .then(data => {
 
+    const hidden = document.querySelector('.edit')
+    hidden.classList.add('show')
     
     idCell = tRow.childNodes[0]
     nameCell = tRow.childNodes[1]
     emailCell = tRow.childNodes[2]
 
-
-    const hidden = document.querySelector('.edit')
-    hidden.classList.add('show')
-
+    idInput.value = ''
+    nameInput.value = ''
+    emailInput.value = ''
 
     button.addEventListener('click', ()=>{
-
 
       if((id == data.id) === true){
         idCell.innerText = idInput.value
         nameCell.innerText = nameInput.value
         emailCell.innerText = emailInput.value
       }
-         
-
+      
       hidden.classList.remove('show')
     })
-      idInput.value = ''
-      nameInput.value = ''
-      emailInput.value = ''
-
     return data
   })
+}
+
+function isInputValueNumber(){
+  idInput.value = idInput.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');
 }
 
 

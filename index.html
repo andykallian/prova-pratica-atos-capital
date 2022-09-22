@@ -34,15 +34,15 @@
           <section class="edit">
             <form class="form">
               <label>
-                ID do usuário:
-                <input class="idInput" type="number" placeholder="ex: 1234" >
+                <p>ID</p>
+                <input class="idInput" type="text" placeholder="ex: 1234" maxlength="4" oninput="isInputValueNumber()" >
               </label>
               <label for="">
-                Nome do usuário
+                <p>Nome</p>
                 <input class="nameInput" type="text" placeholder="Nome completo">
               </label>
               <label for="">
-                Email do usuário
+                <p>Email</p>
                 <input class="emailInput" type="email" placeholder="ex: email@contato.com">
               </label>
               <button id="apply" type="button">Apply</button>

@@ -15,8 +15,7 @@
 body{
   background-color: #151212d4;
   width: 100vw;
-  height: 100vh;
-  max-width: 100%;
+  /* height: 100vh; */
 
   display: flex;
   flex-direction: column;
@@ -111,21 +110,97 @@ table, th, td {
 .form{
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 label{
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 20%;
 }
 
 input{
+  width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
   outline: 0;
 }
 
+button{
+  width: 15%;
+  height: 4.5rem;
+  background-color: rgb(51,51,255);
+  color: #fff;
+}
 
 
+@media screen and (max-width: 650px) {
+  main{
+    padding: 0;
+  }
 
+  .adicionar{
+    width: 40%;
+    margin-left: 2rem;
+    align-self: flex-start;
+  }
+
+  table, tbody, thead{
+    width: 100%;
+    table-layout: fixed;
+    height: fit-content;
+  }
+
+  tr >:nth-child(2){
+    width: 30%;
+    word-wrap: break-word
+  }
+
+  tr > :nth-child(3){
+    width: 35%;
+    word-wrap:break-word
+  }
+
+  .acoes{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 1rem;
+  }
+
+  .acoes img{
+    width: 3rem;
+  }
+
+  form{
+    display: flex !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap;
+  }
+
+  label{
+    width: 30%;
+  }
+
+  label p{
+    text-align: center;
+  }
+
+
+  input{
+    width: 100%;
+  }
+
+  button{
+    width: 100%;
+    align-self: center;
+    height: 4.5rem;
+    margin-block: 1rem;
+    background-color: rgb(51,51,255);
+    color: #fff;
+  }
+  
+}
