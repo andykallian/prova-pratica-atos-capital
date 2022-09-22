@@ -15,6 +15,7 @@
 body{
   background-color: #151212d4;
   width: 100vw;
+  max-width: 100%;
   /* height: 100vh; */
 
   display: flex;
@@ -49,7 +50,7 @@ main{
   gap: 10px;
 }
 
-.adicionar{
+.add{
   width: 16rem;
   background-color: rgb(51,51,255);
   padding: .7rem;
@@ -89,12 +90,12 @@ table, th, td {
   border: .4rem solid #f2f2ecf5;
 }
 
-.acoes img{
+.actions img{
   width: 2rem;
   cursor: pointer; 
 }
 
-.acoes img:first-of-type{
+.actions img:first-of-type{
   margin-right: .3rem;
 }
 
@@ -132,7 +133,9 @@ button{
   width: 15%;
   height: 4.5rem;
   background-color: rgb(51,51,255);
+  border: none;
   color: #fff;
+  cursor: pointer;
 }
 
 
@@ -141,7 +144,7 @@ button{
     padding: 0;
   }
 
-  .adicionar{
+  .add{
     width: 40%;
     margin-left: 2rem;
     align-self: flex-start;
@@ -163,7 +166,7 @@ button{
     word-wrap:break-word
   }
 
-  .acoes{
+  .actions{
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -171,7 +174,7 @@ button{
     padding: 1rem;
   }
 
-  .acoes img{
+  .actions img{
     width: 3rem;
   }
 

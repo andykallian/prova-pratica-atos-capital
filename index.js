@@ -1,10 +1,13 @@
 const tbody = document.querySelector('#tbody')
-const adicionar = document.querySelector('.adicionar')
+const container = document.querySelector('.container')
+const add = document.querySelector('.add')
 const idInput = document.querySelector('.idInput')
 const nameInput = document.querySelector('.nameInput')
 const emailInput = document.querySelector('.emailInput')
 const update = document.querySelectorAll('.update')
 const button = document.getElementById('apply')
+const hidden = document.querySelector('.edit')
+
 
 const url = 'https://gorest.co.in/public/v2/users'
 
@@ -12,63 +15,66 @@ fetch(url)
   .then(res => res.json())
    .then(data => {
     data.forEach(element =>{
-    let tabela = tbody
-    let linha = crialinha(element);
-    tabela.appendChild(linha)
+    let table = tbody
+    let row = createRow(element);
+    table.appendChild(row)
   })
 })
 
-function crialinha(usuario){
-  let linha = document.createElement("tr");
-  linha.classList.add(`${usuario.id}`)
-  linha.classList.add('linha')
+function createRow(user){
+  let row = document.createElement("tr");
+  row.classList.add(`${user.id}`)
+  row.classList.add('line')
   let tdId = document.createElement("td");
   tdId.classList.add('user')
-  let tdNome = document.createElement("td");
-  tdNome.classList.add('nome')
+  let tdName = document.createElement("td");
+  tdName.classList.add('name')
   let tdEmail = document.createElement("td");
   tdEmail.classList.add('email')
-  let tdAcoes = document.createElement("td");
-  tdAcoes.classList.add('acoes')
+  let tdActions = document.createElement("td");
+  tdActions.classList.add('actions')
 
   
-  tdId.innerHTML = usuario.id 
-  tdNome.innerHTML = usuario.name
-  tdEmail.innerHTML = usuario.email
+  tdId.innerHTML = user.id 
+  tdName.innerHTML = user.name
+  tdEmail.innerHTML = user.email
 
   let imgEdit = document.createElement('img')
   imgEdit.src = 'images/editar.png'
   imgEdit.classList.add('update')
 
-  let imgDeletar = document.createElement('img')
-  imgDeletar.src = 'images/excluir.png'
+  let imgDelete = document.createElement('img')
+  imgDelete.src = 'images/excluir.png'
 
-  tdAcoes.appendChild(imgEdit)
-  tdAcoes.appendChild(imgDeletar)
+  tdActions.appendChild(imgEdit)
+  tdActions.appendChild(imgDelete)
 
-  linha.appendChild(tdId)
-  linha.appendChild(tdNome)
-  linha.appendChild(tdEmail)
-  linha.appendChild(tdAcoes)
+  row.appendChild(tdId)
+  row.appendChild(tdName)
+  row.appendChild(tdEmail)
+  row.appendChild(tdActions)
 
     
-  imgEdit.addEventListener('click', editar)
+  imgEdit.addEventListener('click', edit)
 
-  imgDeletar.addEventListener("click", remove)
+  imgDelete.addEventListener("click", remove)
 
-  return linha
+  return row
 }
 
-adicionar.addEventListener('click', (e) =>{
+
+add.addEventListener('click', (e) =>{
   e.preventDefault()
   fetch(url)
   .then(res => res.json())
   .then(data => {
 
-    let numeroAleatorio = Math.floor(Math.random() * data.length)
-    let tabela = tbody
-    let linha = crialinha(data[numeroAleatorio]);
-    tabela.appendChild(linha)
+    hidden.classList.remove('show')
+
+    let randonNumber = Math.floor(Math.random() * data.length)
+    let table = tbody
+    let row = createRow(data[randonNumber]);
+    table.appendChild(row)
   })
 })
 
@@ -80,11 +86,12 @@ function remove(e){
   .then(res => res.json())
   .then(data => {
     tbody.removeChild(element)
+    hidden.classList.remove('show')
     return data
   }) 
 }
 
-function editar(e){
+function edit(e){
   let tRow = e.path[2]
   let id = tRow.classList[0]
   
@@ -120,5 +127,6 @@ function editar(e){
 function isInputValueNumber(){
   idInput.value = idInput.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');
 }
+
 
 
