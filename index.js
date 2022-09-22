@@ -6,7 +6,6 @@ const emailInput = document.querySelector('.emailInput')
 const update = document.querySelectorAll('.update')
 const button = document.getElementById('apply')
 
-
 const url = 'https://gorest.co.in/public/v2/users'
 
 fetch(url)
@@ -32,7 +31,6 @@ function crialinha(usuario){
   let tdAcoes = document.createElement("td");
   tdAcoes.classList.add('acoes')
 
-
   
   tdId.innerHTML = usuario.id 
   tdNome.innerHTML = usuario.name
@@ -53,11 +51,16 @@ function crialinha(usuario){
   linha.appendChild(tdEmail)
   linha.appendChild(tdAcoes)
 
+    
   imgEdit.addEventListener('click', editar)
+
   imgDeletar.addEventListener("click", remove)
 
   return linha
 }
+
+
+
 
 adicionar.addEventListener('click', (e) =>{
   e.preventDefault()
@@ -85,36 +88,39 @@ function remove(e){
 }
 
 function editar(e){
-  console.log(e)
   let tRow = e.path[2]
-  let id = tRow.classList.value
+  let id = tRow.classList[0]
   
   fetch(`${url}/${id}`)
   .then(res => res.json())
   .then(data => {
 
+    
+    idCell = tRow.childNodes[0]
+    nameCell = tRow.childNodes[1]
+    emailCell = tRow.childNodes[2]
+
+
     const hidden = document.querySelector('.edit')
     hidden.classList.add('show')
 
+
     button.addEventListener('click', ()=>{
 
-      idCell = tRow.childNodes[0]
-      nameCell = tRow.childNodes[1]
-      emailCell = tRow.childNodes[2]
 
-      data.id = idInput.value.trim()
-      data.name = nameInput.value.trim()
-      data.email = emailInput.value.trim()
-  
-      idCell.innerText = data.id
-      nameCell.innerText = data.name
-      emailCell.innerText = data.email
+      if((id == data.id) === true){
+        idCell.innerText = idInput.value
+        nameCell.innerText = nameInput.value
+        emailCell.innerText = emailInput.value
+      }
+         
 
+      hidden.classList.remove('show')
+    })
       idInput.value = ''
       nameInput.value = ''
       emailInput.value = ''
-      hidden.classList.remove('show')
-    })
+
     return data
   })
 }
